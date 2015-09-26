@@ -1,0 +1,6 @@
+234901238409
+this will test the to UPpper method
+jython/lib-python/2.7/string.py 
+upper()
+‘cat’
+‘CAT’
