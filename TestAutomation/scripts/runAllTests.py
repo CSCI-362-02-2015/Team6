@@ -50,18 +50,43 @@ def clearTempFolder():
     #if nothing is in temp, the warning is suppressed by sending it to null
     subprocess.call("rm ../temp/* 2>/dev/null", shell=True)
 
+def generateHtml(testResults):
+    html = "<html>"
+    html += "<body>"
+    html += "<h1>Test Results</h1>"
+    html += testResults
+    html += "</body>"
+    return html + "</html>"
+
+def writeHtmlFile(html):
+    os.chdir("..")
+    os.chdir("./reports/")
+    filename = "test_results.html"
+    output = open(filename,'w')
+    output.write(html)
+    subprocess.call("xdg-open " + filename, shell=True)
+
 def main():
     clearTempFolder()
     testCases = getTestCases()
+    outputString = ""
     for testCase in testCases:
         executeTest(testCase)
         if testCase.testPassed:
-            print "Test case "+testCase.id+" passed!"
+            outputString += '<p style = "color:green">'
+            outputString += "Test case "+testCase.id+" passed!"
+            outputString += '</p>'
         else:
-            print "Test case "+testCase.id+" FAILED!"
-            print "\tInput: " + testCase.inputValue 
-            print "\tExpected: " + testCase.expectedResult
-            print "\tActual output was: "+str(testCase.actualResult) 
+            outputString += '<p style = "color:red">'
+            outputString += "Test case "+testCase.id+" FAILED!"
+            outputString += '</p>'
+        outputString += "<ul>"
+        outputString += "<li>\tInput: " + testCase.inputValue + "</li>"
+        outputString += "<li>\tExpected Result: " + testCase.expectedResult + "</li>"
+        outputString += "<li>\tActual Output: " + str(testCase.actualResult) + "</li>"
+        outputString += "</ul>"
+    htmlBody = generateHtml(outputString)
+    writeHtmlFile(htmlBody)
 
             
 main()
