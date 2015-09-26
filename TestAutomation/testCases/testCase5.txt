@@ -1,0 +1,6 @@
+5
+this method will test the capwords method, which takes in a string and returns that string with all of the words capitalized
+jython/lib-python/2.7/string.py 
+capwords()
+this iS a tEst.
+This Is A Test.

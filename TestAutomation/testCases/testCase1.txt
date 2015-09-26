@@ -1,6 +1,6 @@
-234901238409
-this will test the to UPpper method
+1
+this will test the upper method, converting all lower case letters to upper case
 jython/lib-python/2.7/string.py 
 upper()
-‘cat’
+‘caT’
 ‘CAT’
