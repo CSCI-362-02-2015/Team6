@@ -1,0 +1,6 @@
+2
+this will test the to lower method
+jython/lib-python/2.7/string.py 
+lower()
+‘CAT’
+‘cat’

@@ -6,10 +6,10 @@ import sys
 from importlib import import_module
 
 def getTestCases():
-    os.chdir("..")
-    folder = "testCases/"
+    os.chdir("../testCases/")
+    folder = "."
     allFiles = os.listdir(folder)
-    return [fileName for fileName in allFiles if ".txt" in fileName]
+    return [TestCase(fileName) for fileName in allFiles if ".txt" in fileName]
      
 def executeTest(testCase):
     importStatement = convertPathToImport(testCase.modulePath)
@@ -30,7 +30,6 @@ def convertPathToImport(path):
 
 class TestCase:
     def __init__(self, fileName):
-        os.chdir("testCases")
         file = open(fileName, 'r')
         fileContents = file.read().split("\n")
         self.id = fileContents[0].strip()
@@ -50,9 +49,8 @@ def clearTempFolder():
 
 def main():
     clearTempFolder()
-    testCaseNames = getTestCases()
-    for testCaseName in testCaseNames:
-        testCase = TestCase(testCaseName)
+    testCases = getTestCases()
+    for testCase in testCases:
         if executeTest(testCase):
             print "Test case "+testCase.id+" passed!"
         else:
