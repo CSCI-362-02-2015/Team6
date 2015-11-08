@@ -1,0 +1,6 @@
+10
+The count method takes in a string and returns a sum of all instances of a given substring occuring within that string
+jython/lib-python/2.7/string.py 
+count(s, *args)
+example string with a good    number of characters in it$, 
+12
