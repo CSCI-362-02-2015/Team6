@@ -93,7 +93,6 @@ def main():
         outputString += "<li>\tActual Output: " + str(testCase.actualResult) + "</li>"
         outputString += "</ul>"
     htmlBody = generateHtml(outputString)
-    print(htmlBody)
     writeHtmlFile(htmlBody)
 
             
