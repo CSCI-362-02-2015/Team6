@@ -1,6 +1,6 @@
 4
-this will test the swapcase method changing lower case letters to upper case and upper case letters to lower case
+The swapcase method shall take in a string and return the same string with lower case letters capitalized and visa versa
 jython/lib-python/2.7/string.py 
-swapcase()
+swapcase(s)
 teSTING fOr Cases
 TEsting FoR cASES

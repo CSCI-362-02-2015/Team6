@@ -1,6 +1,6 @@
 1
-this will test the upper method, converting all lower case letters to upper case
+The upper method shall take in a string and return that same string entirely in upper case letters
 jython/lib-python/2.7/string.py 
-upper()
+upper(s)
 caT
 CAT
