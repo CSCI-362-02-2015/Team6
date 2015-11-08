@@ -2,5 +2,5 @@
 The strip method shall take in a string and return that same string without leading or trailing whitespaces
 jython/lib-python/2.7/string.py 
 strip(s)
-      this is a test for trim      
+"      this is a test for trim      "
 this is a test for trim

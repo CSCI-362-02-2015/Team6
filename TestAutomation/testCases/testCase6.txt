@@ -2,5 +2,5 @@
 The unquote method shall decode an encoded parameter of a url, replacing all %20 with spaces
 jython/lib-python/2.7/urlparse.py
 unquote(s)
-abc%20def
+"abc%20def"
 abc def

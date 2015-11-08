@@ -2,5 +2,5 @@
 The capwors method shall take in a string, and return that string with all of the words capitalized
 jython/lib-python/2.7/string.py 
 capwords(s)
-this iS a tEst.
+"this iS a tEst."
 This Is A Test.

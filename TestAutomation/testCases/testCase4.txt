@@ -2,5 +2,5 @@
 The swapcase method shall take in a string and return the same string with lower case letters capitalized and visa versa
 jython/lib-python/2.7/string.py 
 swapcase(s)
-teSTING fOr Cases
+"teSTING fOr Cases"
 TEsting FoR cASES

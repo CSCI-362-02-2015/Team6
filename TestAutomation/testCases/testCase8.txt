@@ -2,5 +2,5 @@
 The replace method takes in a string, and replaces all instances of a given substring with instances of a second given substring
 jython/lib-python/2.7/string.py 
 replace(s, old, new)
-she sells seashells by the seashore$,she$,
+"she sells seashells by the seashore"$,"she"$,""
  sells sealls by the seashore
