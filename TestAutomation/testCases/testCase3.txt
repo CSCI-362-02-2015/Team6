@@ -1,6 +1,6 @@
 3
-this will test the lower method
+The lower method shall take in a string and return that same string entirely in lower case letters
 jython/lib-python/2.7/string.py 
-lower()
+lower(s)
 CAT
 cat
