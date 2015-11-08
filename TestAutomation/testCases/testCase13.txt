@@ -1,0 +1,6 @@
+13
+Return a right-justified version of s, in a field of specified width, padded with spaces as needed. The string is never truncated.  If specified the fillchar is used instead of spaces.
+jython/lib-python/2.7/string.py
+rjust(s, *args)
+"test"$,7
+   test

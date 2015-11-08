@@ -42,7 +42,7 @@ class TestCase:
         self.inputValue = fileContents[4].split('$,')
         #go through parameters and pluck out strings vs numbers
         for i in range(len(self.inputValue)):
-            if(self.inputValue[i].contains('"')):
+            if('"' in self.inputValue[i]):
                 self.inputValue[i] = self.inputValue[i][1:-1]
             else: #else it's a number
                 self.inputValue[i] = eval(self.inputValue[i])
@@ -84,6 +84,7 @@ def writeHtmlFile(html):
 def main():
     clearTempFolder()
     testCases = getTestCases()
+    testCases.sort(key= lambda x: eval(x.id))
     outputString = ""
     for testCase in testCases:
         executeTest(testCase)
