@@ -1,6 +1,6 @@
-7
+8
 The replace method takes in a string, and replaces all instances of a given substring with instances of a second given substring
 jython/lib-python/2.7/string.py 
 replace(s, old, new)
-here is a test$,test$,TEST
-here is a TEST
+she sells seashells by the seashore$,she $,
+ sells sealls by the seashore
