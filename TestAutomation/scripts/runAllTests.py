@@ -15,7 +15,9 @@ def executeTest(testCase):
     importStatement = convertPathToImport(testCase.modulePath)
     sys.path.append(testCase.modulePath)
     module = __import__(importStatement, fromlist=[testCase.methodName])
-    methodToTest = getattr(module, testCase.methodName.replace("()",""))
+    #Just gets method name itself, not parameters or other signature
+    methodNameTrimmed =  testCase.methodName[0:testCase.methodName.find('(')]
+    methodToTest = getattr(module, methodNameTrimmed)
     result = methodToTest(testCase.inputValue)
     testCase.actualResult = result
     
