@@ -1,0 +1,6 @@
+7
+The urlunsplit method takes in a five item tuple argument, and creates the equivalent url
+jython/lib-python/2.7/urlparse.py
+urlunparse(data)
+(cat,example,of,unsplit,url)
+of://examplecat?unsplit#url
