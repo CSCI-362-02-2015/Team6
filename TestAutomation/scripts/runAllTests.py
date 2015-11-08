@@ -40,6 +40,12 @@ class TestCase:
         self.modulePath = fileContents[2].strip()
         self.methodName = fileContents[3].strip()
         self.inputValue = fileContents[4].split('$,')
+        #go through parameters and pluck out strings vs numbers
+        for i in range(len(self.inputValue)):
+            if(self.inputValue[i].contains('"')):
+                self.inputValue[i] = self.inputValue[i][1:-1]
+            else: #else it's a number
+                self.inputValue[i] = eval(self.inputValue[i])
         self.expectedResult = fileContents[5]
 
         self.actualResult = ""
