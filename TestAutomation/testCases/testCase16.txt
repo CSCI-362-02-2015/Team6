@@ -1,6 +1,6 @@
 16
 The is_Tarfile method takes in a string and returns a boolean reflecting whether or not that string reperented a file that could be opened
 jython/lib-python/2.7/tarfile.py 
-is_Tarfile(name)
+is_tarfile(name)
 "catchthatthisisnota.tar.gz"
 False
