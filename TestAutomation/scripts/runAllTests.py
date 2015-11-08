@@ -18,7 +18,7 @@ def executeTest(testCase):
     #Just gets method name itself, not parameters or other signature
     methodNameTrimmed =  testCase.methodName[0:testCase.methodName.find('(')]
     methodToTest = getattr(module, methodNameTrimmed)
-    result = methodToTest(testCase.inputValue)
+    result = methodToTest(*testCase.inputValue)
     testCase.actualResult = result
     
     #actual test
@@ -39,7 +39,7 @@ class TestCase:
         self.description = fileContents[1]
         self.modulePath = fileContents[2].strip()
         self.methodName = fileContents[3].strip()
-        self.inputValue = fileContents[4]
+        self.inputValue = fileContents[4].split('$,')
         self.expectedResult = fileContents[5]
 
         self.actualResult = ""
@@ -90,7 +90,7 @@ def main():
             outputString += "Test case "+testCase.id+" FAILED!"
             outputString += '</p>'
         outputString += "<ul>"
-        outputString += "<li>\tInput: " + testCase.inputValue + "</li>"
+        outputString += "<li>\tInputs: " + str(testCase.inputValue) + "</li>"
         outputString += "<li>\tExpected Result: " + testCase.expectedResult + "</li>"
         outputString += "<li>\tActual Output: " + str(testCase.actualResult) + "</li>"
         outputString += "</ul>"
