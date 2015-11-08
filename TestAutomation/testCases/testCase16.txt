@@ -1,6 +1,6 @@
 16
-The expandtabs method, given two arguments, will change the number of whitespaces that \t expands to when rocessing the given text
+The expandtabs method, given two arguments, will change the number of whitespaces that \t expands to when processing the given text
 jython/lib-python/2.7/string.py 
 expandtabs(s, tabsize=8)
-"hello\tworld"$,12
-hello            world
+"hello	world"$,1
+hello world
