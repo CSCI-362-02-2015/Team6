@@ -3,4 +3,4 @@ The wrap method takes in a string and wraps it such that it fits in lined of no 
 jython/lib-python/2.7/textwrap.py 
 wrap(text, width=70, **kwargs)
 "hello world and all who inhabit it"$,8
-['hello ','world ','and all ','who ','inhabit ','it']
+['hello', 'world', 'and all', 'who', 'inhabit', 'it']
