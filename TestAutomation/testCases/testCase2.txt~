@@ -1,6 +1,0 @@
-2
-this will test the strip method, taking a string and removing any trailing or leading whitespace
-jython/lib-python/2.7/string.py 
-strip()
-      this is a test for trim      
-this is a test for trim

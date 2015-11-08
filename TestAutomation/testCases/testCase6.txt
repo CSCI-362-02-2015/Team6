@@ -1,6 +1,6 @@
 6
-The _munge_whitespace method shall take in a string and return that string with tabs expanded ond other whitespace sharacters converted as well
-jython/lib-python/2.7/textwrap.py
-_munge_whitespace(self,text)
-cat\tCat\n\nCAT
-cat    Cat  CAT
+The unquote method shall decode an encoded parameter of a url, replacing all %20 with spaces
+jython/lib-python/2.7/urlparse.py
+unquote(s)
+abc%20def
+abc def
