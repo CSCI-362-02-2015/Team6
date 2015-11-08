@@ -1,0 +1,6 @@
+20
+The wrap method takes in a string and wraps it such that it fits in lined of no more than the given width
+jython/lib-python/2.7/textwrap.py 
+wrap(text, width=70, **kwargs)
+"hello world and all who inhabit it"$,8
+hello \nworld \nand all \nwho \ninhabit \nit
