@@ -22,7 +22,7 @@ def executeTest(testCase):
     testCase.actualResult = result
     
     #actual test
-    if result == testCase.expectedResult:
+    if str(result) == testCase.expectedResult:
         testCase.testPassed = True
     return testCase
 
