@@ -1,6 +1,6 @@
 16
-The is_Tarfile method takes in a string and returns a boolean reflecting whether or not that string reperented a file that could be opened
-jython/lib-python/2.7/tarfile.py 
-is_tarfile(name)
-"catchthatthisisnota.tar.gz"
-False
+The expandtabs method, given two arguments, will change the number of whitespaces that \t expands to when rocessing the given text
+jython/lib-python/2.7/string.py 
+expandtabs(s, tabsize=8)
+"hello\tworld"$,12
+hello            world
