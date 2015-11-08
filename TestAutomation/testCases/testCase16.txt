@@ -1,6 +1,6 @@
 16
-The expandtabs method, given two arguments, will change the number of whitespaces that \t expands to when rocessing the given text
-jython/lib-python/2.7/string.py 
-expandtabs(s, tabsize=8)
-"hello\tworld"$,12
-hello            world
+The wrap method takes in a string and wraps it such that it fits in lined of no more than the given width
+jython/lib-python/2.7/textwrap.py 
+wrap(text, width=70, **kwargs)
+"hello world and all who inhabit it"$,8
+hello \nworld \nand all \nwho \ninhabit \nit
