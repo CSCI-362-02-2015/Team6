@@ -1,5 +1,6 @@
 #!/usr/bin/python
  
+from sys import platform as _platform
 import subprocess   
 import os.path
 import sys
@@ -64,7 +65,13 @@ def writeHtmlFile(html):
     filename = "test_results.html"
     output = open(filename,'w')
     output.write(html)
-    subprocess.call("xdg-open " + filename, shell=True)
+    if _platform == "linux" or _platform == "linux2":
+        # linux:
+        subprocess.call("xdg-open " + filename, shell=True)
+    elif _platform == "darwin":
+        # OS X:
+        subprocess.call("open " + filename, shell=True)
+
 
 def main():
     clearTempFolder()
@@ -86,6 +93,7 @@ def main():
         outputString += "<li>\tActual Output: " + str(testCase.actualResult) + "</li>"
         outputString += "</ul>"
     htmlBody = generateHtml(outputString)
+    print(htmlBody)
     writeHtmlFile(htmlBody)
 
             
