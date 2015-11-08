@@ -1,0 +1,6 @@
+7
+
+jython/lib-python/2.7/string.py 
+replace(s)
+here is a test$,test$,TEST
+here is a TEST
