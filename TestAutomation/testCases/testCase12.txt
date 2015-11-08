@@ -1,0 +1,6 @@
+12
+The gcd method takes two integers returns the greatest common denominator of the two integers given, for use by Jython's fraction functions
+jython/lib-python/2.7/fractions.py
+gcd(a,b)
+12$,18
+6
