@@ -59,11 +59,39 @@ def clearTempFolder():
     #if nothing is in temp, the warning is suppressed by sending it to null
     subprocess.call("rm ../temp/* 2>/dev/null", shell=True)
 
-def generateHtml(testResults):
+def generateHtml(testCases):
     html = "<html>"
     html += "<body>"
     html += "<h1>Test Results</h1>"
-    html += testResults
+    #generate body
+    html += '<table border = "1">'
+    html += '<tr>'
+    html += '<td>Test case number</td>'
+    html += '<td>Status</td>'
+    html += '<td>Method Being Tested</td>'
+    html += '<td>Inputs</td>'
+    html += '<td>Expected Result</td>'
+    html += '<td>Actual Result</td>'
+    html += '</tr>'
+    for testCase in testCases:
+        html += '<tr>'
+        html += '<td>' + testCase.id +'</td>'
+        result = ''
+        if testCase.testPassed:
+            result = '<p style = "color:green">'
+            result += 'Passed!'
+            result += '</p>'
+        else:
+            result = '<p style = "color:red">'
+            result += 'Failed!'
+            result += '</p>'
+        html += '<td>' + result +'</td>'  
+        html += '<td>'+ testCase.methodName+'</td>'
+        html += '<td>'+ str(testCase.inputValue)+'</td>'
+        html += '<td>'+ testCase.expectedResult+'</td>'
+        html += '<td>'+ str(testCase.actualResult)+'</td>'
+        html += '</tr>'
+    html += '</table>'
     html += "</body>"
     return html + "</html>"
 
@@ -88,21 +116,7 @@ def main():
     outputString = ""
     for testCase in testCases:
         executeTest(testCase)
-        if testCase.testPassed:
-            outputString += '<p style = "color:green">'
-            outputString += "Test case "+testCase.id+" passed!"
-            outputString += '</p>'
-        else:
-            outputString += '<p style = "color:red">'
-            outputString += "Test case "+testCase.id+" FAILED!"
-            outputString += '</p>'
-        outputString += "<ul>"
-        outputString += "<li>\tInputs: " + str(testCase.inputValue) + "</li>"
-        outputString += "<li>\tExpected Result: " + testCase.expectedResult + "</li>"
-        outputString += "<li>\tActual Output: " + str(testCase.actualResult) + "</li>"
-        outputString += "</ul>"
-    htmlBody = generateHtml(outputString)
+    htmlBody = generateHtml(testCases)
     writeHtmlFile(htmlBody)
-
             
 main()
