@@ -7,7 +7,7 @@ import sys
 from importlib import import_module
 
 def getTestCases():
-    os.chdir("../testCases/")
+    os.chdir("./testCases/")
     allFiles = os.listdir(".")
     return [TestCase(fileName) for fileName in allFiles if ".txt" in fileName and fileName[-1] != '~']
      
