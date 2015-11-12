@@ -1,5 +1,5 @@
 15
-The replace method takes in a string, and replaces all instances of a given substring with instances of a second given substring
+The atoi method takes in a string representing an integer in a given base and returns the integer in base 10
 jython/lib-python/2.7/string.py 
 atoi(s,base=10)
 "1BC"$,16
