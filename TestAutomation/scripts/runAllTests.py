@@ -6,21 +6,32 @@ import os.path
 import sys
 from importlib import import_module
 
+'''
+ This python script runs a series of test cases specified in text documents located
+ in then TestCases directory of this project. This 
+'''
+
+
 def getTestCases():
     os.chdir("./testCases/")
     allFiles = os.listdir(".")
     return [TestCase(fileName) for fileName in allFiles if ".txt" in fileName and fileName[-1] != '~']
      
 def executeTest(testCase):
-    importStatement = convertPathToImport(testCase.modulePath)
-    sys.path.append(testCase.modulePath)
-    module = __import__(importStatement, fromlist=[testCase.methodName])
+    moduleName = convertPathToImport(testCase.modulePath)
+    #take out module name from path
+    #TODO: add flexibility to this, allow user to specify their own path in jythonpath.txt
+    #Right now, only path that works is /users/USERNAME/jython/...
+    pathToModule = "/users/" + os.environ['USER']+ "/" + "/".join(testCase.modulePath.split("/")[0:-1])
+    sys.path.insert(0,pathToModule)
+    module = import_module(moduleName)
+
     #Just gets method name itself, not parameters or other signature
     methodNameTrimmed =  testCase.methodName[0:testCase.methodName.find('(')]
     methodToTest = getattr(module, methodNameTrimmed)
     result = methodToTest(*testCase.inputValue)
     testCase.actualResult = result
-    
+    sys.path.pop(0)
     #actual test
     if str(result) == testCase.expectedResult:
         testCase.testPassed = True
@@ -112,6 +123,7 @@ def writeHtmlFile(html):
 def main():
     clearTempFolder()
     testCases = getTestCases()
+    #sort the test cases by id
     testCases.sort(key= lambda x: eval(x.id))
     outputString = ""
     for testCase in testCases:
