@@ -8,21 +8,35 @@ from importlib import import_module
 
 '''
  This python script runs a series of test cases specified in text documents located
- in then TestCases directory of this project. This 
+ in then TestCases directory of this project.  
+
+ The main method at the bottom of this file shows the basic operations being performed
 '''
 
+#goes to the codebase_path.txt file located in the docs folder to find where to 
+#look for the root directory of the codebase being tested, stores path in global variable
+def getPathToTestCodebase():
+    os.chdir("./docs/")
+    codebasePathFile = open('codebase_path.txt')
+    fileContents = codebasePathFile.read().split("\n")
+    pathToCodebase = fileContents[0]
+    codebasePathFile.close()
+    os.chdir('..')
+    return pathToCodebase
 
 def getTestCases():
     os.chdir("./testCases/")
     allFiles = os.listdir(".")
-    return [TestCase(fileName) for fileName in allFiles if ".txt" in fileName and fileName[-1] != '~']
-     
+    # files ending in ~ are temporary files, don't execute those test cases!
+    testCases = [TestCase(fileName) for fileName in allFiles if ".txt" in fileName and fileName[-1] != '~']
+    os.chdir("..")
+    return testCases
+
 def executeTest(testCase):
     moduleName = convertPathToImport(testCase.modulePath)
     #take out module name from path
-    #TODO: add flexibility to this, allow user to specify their own path in jythonpath.txt
-    #Right now, only path that works is /users/USERNAME/jython/...
-    pathToModule = "/users/" + os.environ['USER']+ "/" + "/".join(testCase.modulePath.split("/")[0:-1])
+    pathToCodebase = getPathToTestCodebase()
+    pathToModule = pathToCodebase + "/".join(testCase.modulePath.split("/")[0:-1])
     sys.path.insert(0,pathToModule)
     module = import_module(moduleName)
 
@@ -42,6 +56,8 @@ def convertPathToImport(path):
     path = path.replace(".py","")
     return path.split(".")[-1]
 
+#this is the TestCase object, give it the filename of a test case txt file, and it 
+#creates an object containing all of the test case's details 
 class TestCase:
     def __init__(self, fileName):
         file = open(fileName, 'r')
@@ -70,6 +86,8 @@ def clearTempFolder():
     #if nothing is in temp, the warning is suppressed by sending it to null
     subprocess.call("rm ../temp/* 2>/dev/null", shell=True)
 
+#Takes a list of test case objects (test cases should have been executed already)
+#and constructs the html results page
 def generateHtml(testCases):
     html = "<html>"
     html += "<body>"
@@ -107,7 +125,6 @@ def generateHtml(testCases):
     return html + "</html>"
 
 def writeHtmlFile(html):
-    os.chdir("..")
     os.chdir("./reports/")
     filename = "test_results.html"
     output = open(filename,'w')
@@ -119,13 +136,11 @@ def writeHtmlFile(html):
         # OS X:
         subprocess.call("open " + filename, shell=True)
 
-
-def main():
+def main(): 
     clearTempFolder()
+    getPathToTestCodebase() #find where the user put the codebase to test
     testCases = getTestCases()
-    #sort the test cases by id
-    testCases.sort(key= lambda x: eval(x.id))
-    outputString = ""
+    testCases.sort(key= lambda x: eval(x.id)) #sort the test cases by id
     for testCase in testCases:
         executeTest(testCase)
     htmlBody = generateHtml(testCases)
