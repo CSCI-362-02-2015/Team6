@@ -1,6 +1,6 @@
 15
 The atoi method takes in a string representing an integer in a given base and returns the integer in base 10
-jython/lib-python/2.7/string.py 
+/lib-python/2.7/string.py 
 atoi(s,base=10)
 "1BC"$,16
 444

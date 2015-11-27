@@ -1,6 +1,6 @@
 3
 The lower method shall take in a string and return that same string entirely in lower case letters
-jython/lib-python/2.7/string.py 
+/lib-python/2.7/string.py 
 lower(s)
 "CAT"
 cat

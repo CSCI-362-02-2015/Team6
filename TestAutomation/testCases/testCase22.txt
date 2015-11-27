@@ -1,6 +1,6 @@
 22
 The wrap method takes in a string and wraps it such that it fits in lined of no more than the given width, these lines are returned as elements of a list
-jython/lib-python/2.7/textwrap.py 
+/lib-python/2.7/textwrap.py 
 wrap(text, width=70, **kwargs)
 "hello world and all who inhabit it"$,15
 ['hello world and', 'all who inhabit', 'it']

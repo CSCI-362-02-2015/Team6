@@ -1,6 +1,6 @@
 9
 Return the lowest index in s where substring sub is such that sub is contained within s[start,end]. arguments start and end are interpreted as in slice notation.
-jython/lib-python/2.7/string.py
+/lib-python/2.7/string.py
 find(s, *args)
 "looking for the first instance of the letter g"$,"g"
 6

@@ -1,6 +1,6 @@
 23
 Pad a numeric string x with zeros on the left, to fill a field of the specified width.  The string x is never truncated.
-jython/lib-python/2.7/string.py
+/lib-python/2.7/string.py
 zfill(x, width)
 123$,0
 123

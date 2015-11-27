@@ -1,6 +1,6 @@
 25
 The replace method takes in a string, and replaces all instances of a given substring with instances of a second given substring
-jython/lib-python/2.7/string.py 
+/lib-python/2.7/string.py 
 replace(s, old, new)
 "how will   it handle   a   t on  of useless space    ?"$," "$,"_"
 how_will___it_handle___a___t_on__of_useless_space____?
